@@ -1,24 +1,56 @@
-- name: vscode
-  version: latest
+# yaml-language-server: $schema=https://aka.ms/configuration-dsc-schema/0.2
+# name: devhome
+# version: 1.0.0
+# description: My personal devhome
 
-- name: vscode-extension
-  extensions:
-    - ms-vscode.vscode-windows-registry
-    - github.copilot
+properties:
+  assertions:
+    - resource: Microsoft.Windows.Developer/OsVersion
+      directives:
+        description: Verify min version requirement
+        allowPrerelease: true
+      settings:
+        MinVersion: '10.0.22000'
+  resources:
+    - resource: Microsoft.Windows.Developer/DeveloperMode
+      directives:
+        description: Enable Developer Mode
+        allowPrerelease: true
+      settings:
+        Ensure: Present
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft.AppInstaller
+      version: latest
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: git.git
+      version: latest
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft.DotNet.SDK.8
+      version: latest
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft.VisualstudioCode
+      version: latest
+      settings:
+        Extensions:
+          - ms-vscode.vscode-windows-registry
+          - github.copilot
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft.Powershell
+      version: latest   
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: JanDeDobbeleer.OhMyPosh
+      version: latest
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Microsoft.WindowsTerminal
+      version: latest
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: GitHub.GitHubDesktop
+      version: latest
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: Postman.Postman
+      version: latest
+    - resource: Microsoft.WinGet.DSC/WinGetPackage
+      id: 9NJ7GLT6GLQV
+      version: latest
 
-- name: github-desktop
-  version: latest
-
-- name: winget
-  version: latest
-
-- name: wsl
-  version: latest
-
-- name: windows-terminal
-  version: latest
-
-- name: cbl-mariner
-  version: latest
-- name: github-repo
-  url: https://github.com/mrcsdf/devmarcusf.git
+```
