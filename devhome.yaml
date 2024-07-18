@@ -1,0 +1,27 @@
+- name: vscode
+  version: latest
+
+- name: vscode-extension
+  extensions:
+    - ms-vscode.vscode-windows-registry
+    - github.copilot
+
+- name: microsoft.powershell
+  version: latest
+  
+- name: github-desktop
+  version: latest
+
+- name: winget
+  version: latest
+
+- name: wsl
+  version: latest
+
+- name: windows-terminal
+  version: latest
+
+- name: 9NJ7GLT6GLQV
+  version: latest
+- name: github-repo
+  url: https://github.com/marcusf_microsoft/marcusfdevhome.git
